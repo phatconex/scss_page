@@ -1,0 +1,46 @@
+@mixin posAbolute($direction, $x, $y) {
+    position: absolute;
+    @if $direction == "tl" {
+        top: $y;
+        left: $x;
+    }
+    @if $direction == "tr" {
+        top: $y;
+        right: $x;
+    }
+    @if $direction == "bl" {
+        bottom: $y;
+        left: $x;
+    }
+    @if $direction == "br" {
+        bottom: $y;
+        right: $x;
+    }
+    @if $direction == "centerX" {
+        top: $y;
+        left: $x;
+        transform: translateX(-50%);
+    }
+    @if $direction == "centerY" {
+        top: $y;
+        left: $x;
+        transform: translateY(-50%);
+    }
+    @if $direction == "centerXY" {
+        top: $y;
+        left: $x;
+        transform: translate(-50%, -50%);
+    }
+}
+@mixin flexbox($align, $justify) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+@mixin beforeAfter($width, $height, $bg) {
+    content: "";
+    display: block;
+    width: $width;
+    height: $height;
+    background-color: $bg;
+}

@@ -1,0 +1,126 @@
+.banner {
+    background-image: url(../img/bg_white.png);
+    background-size: cover;
+    @include flexbox(center, unset);
+    flex-wrap: wrap;
+    padding: 100px 100px;
+    position: relative;
+    @media (max-width: 991px) {
+        padding: 32px 24px;
+    }
+    @media (min-width: 992px) {
+        &:before {
+            @include beforeAfter(30%, 100%, $primaryColor);
+            @include posAbolute("tr", 0, 0);
+            position: absolute;
+        }
+    }
+    &-ball {
+        img {
+            @include posAbolute("tl", 50px, -50px);
+            width: 100px;
+            animation: ball 2s infinite alternate linear;
+            z-index: -1;
+        }
+        @media (max-width: 991px) {
+            display: none;
+        }
+    }
+    &-content {
+        width: 60%;
+        text-align: center;
+        font-family: $secondaryFont;
+        animation: content 2s;
+        @media (max-width: 991px) {
+            width: 100%;
+        }
+        h3 {
+            color: $primaryColor;
+            font-size: $fs-32;
+            @media (max-width: 991px) {
+                font-size: $fs-24;
+            }
+        }
+        h1 {
+            font-size: 100px;
+            font-weight: bold;
+            @media (max-width: 991px) {
+                font-size: $fs-52;
+            }
+        }
+        h2 {
+            font-size: $fs-64;
+            margin-bottom: 32px;
+            @media (max-width: 991px) {
+                font-size: $fs-32;
+            }
+        }
+    }
+    &-list {
+        @include flexbox(center, center);
+        margin: 0 auto;
+        width: 50%;
+        gap: 20px;
+        @media (max-width: 991px) {
+            width: 100%;
+            margin-bottom: 32px;
+        }
+        li {
+            width: 33%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            padding: 12px;
+            transition: 0.5s;
+            border-radius: 50%;
+            &.active {
+                border: 2px solid $primaryColor;
+            }
+        }
+    }
+    &-thumb {
+        width: 40%;
+        position: relative;
+        z-index: 9;
+        @media (max-width: 991px) {
+            width: 100%;
+        }
+        &_big {
+            animation: thumb 2s;
+        }
+        &_decor {
+            @include posAbolute("br", -70px, -70px);
+            z-index: -1;
+            animation: content 2s;
+            @media (max-width: 991px) {
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+}
+@keyframes ball {
+    from {
+        top: -50px;
+    }
+    to {
+        top: 0;
+    }
+}
+@keyframes content {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes thumb {
+    from {
+        transform: scale(0.5) rotate(0);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
